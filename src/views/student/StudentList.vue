@@ -60,7 +60,7 @@ export default {
                 getTotalPages() {
                     let url ='http://localhost:3000/students'
                     if(this.searchName.trim() != ''){
-                        url += '?name_like' + this.searchName;
+                        url += '?name_like=' + this.searchName;
                     }
                     this.axios.get(url).then((result) => {
                         this.pager.totalCount = result.data.length;
@@ -73,7 +73,7 @@ export default {
                     let url =
                         `http://localhost:3000/students?_expand=classes&_page=${this.pager.pageIndex}&_limit=${this.pager.pageSize}`;
                         if(this.searchName.trim() != ''){
-                        url += '&name_like' + this.searchName;
+                        url += '&name_like=' + this.searchName;
                     }
                     this.axios.get(url).then((result) => {
                         this.students = result.data;
@@ -85,6 +85,8 @@ export default {
                     }
                     this.getTotalPages();
                     this.getStudents();
+                    let sd = "";
+                console.log(typeof(searchName));
                 },
                 del(id) {
                         this.axios.delete("http://localhost:3000/students/" + id).then((result) => {
@@ -102,6 +104,7 @@ export default {
             mounted() {
                 this.getTotalPages();
                 this.getStudents();
+                
             },
 }
 </script>

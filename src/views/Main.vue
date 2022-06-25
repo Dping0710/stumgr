@@ -54,6 +54,9 @@
   font-size: 12px;
   line-height: 60px;  
   color:#fff;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 </style>
             
